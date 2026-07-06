@@ -17,13 +17,12 @@ import { initializeSocket } from "./lib/socketio.js";
 import cron from "node-cron";
 import fs from "fs";
 
-
 dotenv.config();
 
-const MODE=process.env.NODE_ENV
+const MODE = process.env.NODE_ENV;
 const app = express();
 const httpServer = createServer(app);
-initializeSocket(httpServer)
+initializeSocket(httpServer);
 
 const PORT = process.env.PORT;
 const __dirname = path.resolve();
@@ -70,8 +69,8 @@ app.use("/api/stat", stateRouter);
 app.use("/api/album", albumRouter);
 app.use(errorHandler);
 
-if(MODE==="production"){
-  app.use(express.static(path.join(__dirname,"../front-end/dist")));
+if (MODE === "production") {
+  app.use(express.static(path.join(__dirname, "../front-end/dist")));
   app.get("/*splat", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../front-end/dist/index.html"));
   });
