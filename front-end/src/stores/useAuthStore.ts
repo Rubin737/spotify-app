@@ -13,7 +13,6 @@ export const useAuthStore=create<AdminStore>((set)=>(
                 const response=await axiosInstance.get("/admin/check-admin");
                 set({isAdmin:response.data.admin})
             } catch (err) {
-                console.log(err.response.data.data);
                 set({error:err.response.data})
             }
             finally{

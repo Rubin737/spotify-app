@@ -1,5 +1,5 @@
 import { axiosInstance } from "@/lib/axios";
-import { Songs } from "@/types/types";
+import { Albums, Songs } from "@/types/types";
 import { create } from "zustand";
 
 export interface Stat {
@@ -13,10 +13,13 @@ export interface Admin {
   fetchSongs: () => Promise<void>;
   fetchStats: () => Promise<void>;
   deleteSong: (id: string) => Promise<void>;
+  deleteAlbum: (id: string) => Promise<void>;
+
   stats: Stat;
   isLoading: boolean;
   error: null | string;
   songs: Songs[];
+  albums:Albums[];
 }
 
 export const useAdminStore = create<Admin>((set) => ({
@@ -29,13 +32,13 @@ export const useAdminStore = create<Admin>((set) => ({
     totalUsers: 0,
   },
   songs: [],
+  albums:[],
   fetchSongs: async () => {
     set({ isLoading: true });
     try {
       const response = await axiosInstance.get("/song/all-songs");
       set({ songs: response.data.data });
     } catch (err: any) {
-      console.log(err.response.data);
       set({ error: err.response?.data?.message });
     } finally {
       set({ isLoading: false });
@@ -47,7 +50,6 @@ export const useAdminStore = create<Admin>((set) => ({
       const response = await axiosInstance.get("/stat/get-stats");
       set({ stats: response?.data?.data });
     } catch (err: any) {
-      console.log(err);
       set({ error: err.response?.data?.message });
     } finally {
       set({ isLoading: false });
@@ -63,7 +65,21 @@ export const useAdminStore = create<Admin>((set) => ({
       const response = await axiosInstance.get("/stat/get-stats");
       set({ stats: response?.data?.data });
     } catch (err: any) {
-      console.log(err?.response?.data?.message);
+      set({ error: err?.response?.data?.message });
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+  deleteAlbum: async (id: string) => {
+    set({ isLoading: true });
+    try {
+      await axiosInstance.delete(`/admin/delete-album/${id}`);
+      set((state) => ({
+        albums: state.albums.filter((album) => album._id !== id),
+      }));
+      const response = await axiosInstance.get("/stat/get-stats");
+      set({ stats: response?.data?.data });
+    } catch (err: any) {
       set({ error: err?.response?.data?.message });
     } finally {
       set({ isLoading: false });

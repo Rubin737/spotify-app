@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Music } from 'lucide-react'
 import React from 'react'
 import SongTable from './SongTable'
-import OpenDialog from './OpenDialog'
+import OpenDialogSong from './OpenDialogSong'
 
 const SongContent = () => {
   return (
@@ -20,7 +20,7 @@ const SongContent = () => {
                 Manage your music tracks
               </CardDescription>
             </div>
-            <OpenDialog/>
+            <OpenDialogSong/>
           </div>
         </CardHeader>
          <CardContent>

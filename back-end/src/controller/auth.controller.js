@@ -15,13 +15,11 @@ export const authentication = async (req, res, next) => {
         fullName,
         imageUrl,
       });
-      console.log(createUser,"NEW FUCKING USER");
     }
     res
       .status(201)
       .json({ success: true, message: "User created successfully" });
   } catch (error) {
-    console.log("errors while uploading");
     next(error);
   }
 };

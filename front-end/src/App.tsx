@@ -5,8 +5,9 @@ import "./App.css";
 import { AuthenticateWithRedirectCallback } from "@clerk/react";
 import MainLayout from "./components/MainLayout";
 import AlbumPage from "./pages/album/AlbumPage";
-import Testing from "./helper/Testing";
 import AdminPage from "./pages/admin/AdminPage";
+import ChatPage from "./pages/chat/ChatPage";
+import ErrorPage from "./pages/404/ErrorPage";
 const App = () => {
   return (
     <div className="bg-background">
@@ -24,8 +25,9 @@ const App = () => {
         <Route path="/admin" element={<AdminPage/>} />
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/test" element={<Testing />} />
+          <Route path="/chat" element={<ChatPage />} />
           <Route path="/album/:albumId" element={<AlbumPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </div>

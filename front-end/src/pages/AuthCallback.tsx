@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 const AuthCallback = () => {
 
  const {user,isLoaded}=useUser();
- console.log(user)
  const navigate=useNavigate();
  const userCreateAttemept=useRef(false);
 
@@ -22,7 +21,6 @@ const AuthCallback = () => {
         imageUrl:user.imageUrl
       })
     } catch (error) {
-      console.log(`Error in creating user ${error}`);
     }
     finally{
       navigate("/")

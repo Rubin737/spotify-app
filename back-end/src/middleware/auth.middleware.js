@@ -7,8 +7,6 @@ dotenv.config();
 export const requireAdmin = async (req, res, next) => {
   try {
     const { userId } = getAuth(req);
-    console.log(userId, "current UserID");
-
     if (!userId) {
       return res.status(401).json({ success: false, message: "Unauthorized" });
     }
@@ -29,7 +27,6 @@ export const requireAdmin = async (req, res, next) => {
 
     next();
   } catch (error) {
-    console.log("Error in Require Admin", error);
     res.status(500).json({ success: false, message: "Auth check failed" });
   } 
 };

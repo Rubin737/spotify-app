@@ -3,6 +3,7 @@ import { useAuthStore } from "@/stores/useAuthStore";
 import { useUser, UserButton } from "@clerk/react";
 import { LayoutDashboardIcon } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "../ui/button";
 
 const TopBar = () => {
   const { isSignedIn, isLoaded } = useUser();
@@ -17,10 +18,12 @@ const TopBar = () => {
 
       <div className="flex items-center gap-2">
         {isAdmin && (
-          <Link to="/admin" className="flex gap-1.5 items-center btn btn-sm hover:scale-105 rounded-md">
-            <LayoutDashboardIcon className="size-5 text-secon text-primary font-bold" />
-            <span className="font-bold text-sm">Admin Dashboard</span>
+          <Button asChild className="text-sm font-bold bg-zinc-700 border border-zinc-800">
+          <Link to="/admin" className="">
+            <LayoutDashboardIcon className="size-5 text-green-500" />
+            Admin Dashboard
           </Link>
+          </Button>
         )} 
         
         {isSignedIn ? (

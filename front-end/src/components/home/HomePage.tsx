@@ -38,7 +38,7 @@ const HomePage = () => {
 
   return (
     <div className="space-y-3">
-      <TopBar />
+      <div className="pt-2"><TopBar /></div>
       <FeaturedSongs title="Good Morning" songs={featuredSongs} isLoading={isLoading} error={error}/>
       <SongsGrid title="Made For You" songs={madeForUSongs} isLoading={isLoading} error={error}/>
       <SongsGrid title="Trending Songs" songs={trendingSongs} isLoading={isLoading} error={error}/>

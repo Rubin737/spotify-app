@@ -10,14 +10,6 @@ cloudinary.config({
 
 export default cloudinary
 
-// console.log({
-//   cloudName: process.env.CLOUD_NAME,
-//   apiKey: process.env.CLOUDINARY_API_KEY,
-//   apiSecret: process.env.CLOUDINARY_API_SECRET,
-// });
-
-// cloudinary.api.ping().then(console.log).catch(console.error);
-
 
 
 

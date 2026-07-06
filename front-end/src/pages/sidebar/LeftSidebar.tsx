@@ -1,76 +1,71 @@
+import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import PlayListSkeleton from "@/helper/PlayListSkeleton";
+import PlayListSkeleton from "@/skeletons/PlayListSkeleton";
 import { useMusicStore } from "@/stores/useMusicStore";
-import { HomeIcon, Library, MessageCircleIcon } from "lucide-react";
+import { Home, Library, MessageCircleIcon } from "lucide-react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const LeftSidebar = () => {
-  // const { albums, isLoading, fetchAlbums } = useMusicStore();
-  
-  const albums = useMusicStore(store=>store.albums);
-  const fetchAlbums = useMusicStore(store=>store.fetchAlbums);
-  const isLoading = useMusicStore(store=>store.isLoading);
-  
+  const albums = useMusicStore((store) => store.albums);
+  const fetchAlbums = useMusicStore((store) => store.fetchAlbums);
+  const isLoading = useMusicStore((store) => store.isLoading);
+
   useEffect(() => {
     fetchAlbums();
-  }, []);
+  }, [fetchAlbums]);
 
   return (
     <section className="flex h-full flex-col text-white p-2 space-y-3">
-      
-      {/* Top Menu */}
       <div className="space-y-2 bg-zinc-800 rounded-xl p-2">
-        <Link
-          to="/"
-          className="btn btn-ghost hover:btn-outline w-full rounded-md justify-start"
+        <Button
+          asChild
+          className="border border-zinc-900 bg-zinc-700 w-full justify-start gap-2"
         >
-          <HomeIcon className="size-4" />
-          <span>Home</span>
-        </Link>
+          <Link to="/">
+            <Home className="size-4" />
+            Home
+          </Link>
+        </Button>
 
-        <Link
-          to="/"
-          className="btn btn-ghost hover:btn-outline rounded-md w-full justify-start"
+        <Button
+          asChild
+          className="border border-zinc-900 bg-zinc-700 w-full justify-start gap-2"
         >
-          <MessageCircleIcon className="size-4" />
-          <span>Messages</span>
-        </Link>
+          <Link to="/chat">
+            <MessageCircleIcon className="size-4" />
+            Messages
+          </Link>
+        </Button>
       </div>
 
-      <div className="flex flex-1 flex-col bg-zinc-800 rounded-xl p-2">
-        
-        <Link
-          to="/"
-          className="btn rounded-md btn-ghost hover:btn-outline w-full justify-start mb-2"
-        >
-          <Library className="size-4" />
-          <span>Playlists</span>
-        </Link>
-
-        
-        <ScrollArea className="flex-1">
+      <div className="flex flex-1  flex-col bg-zinc-800 rounded-xl p-2">
+         <div className="border inline-flex gap-2 px-2 py-1.5 bg-zinc-700 rounded-md text-sm items-center border-zinc-900 w-full">
+          <Library className="size-4.5"/> Libary
+         </div> 
+        <ScrollArea className="flex-1 h-full mt-2">
           <div className="space-y-2">
             {isLoading ? (
+              
               <PlayListSkeleton />
             ) : (
               albums.map((eachAlbum) => (
                 <Link
                   key={eachAlbum._id}
                   to={`/album/${eachAlbum._id}`}
-                  className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 p-2 rounded-md transition"
+                  className="flex items-center gap-3 bg-zinc-900 p-2 rounded-md transition"
                 >
                   <img
                     src={eachAlbum.imageUrl}
-                    className="size-12 object-cover rounded-md"
+                    className="size-10 object-cover rounded-md"
                   />
 
                   <div className="flex-1 overflow-hidden">
-                    <p className="text-sm font-medium truncate">
+                    <p className="text-xs font-bold truncate">
                       {eachAlbum.title}
                     </p>
                     <p className="text-xs text-zinc-400 truncate">
-                      Album ● {eachAlbum.artist}
+                      Album •  {eachAlbum.artist}
                     </p>
                   </div>
                 </Link>

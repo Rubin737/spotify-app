@@ -1,0 +1,22 @@
+{
+  "name": "spotify-app",
+  "version": "1.0.0",
+  "description": "A full-stack music streaming web application inspired by Spotify — built from scratch with a MERN + TypeScript stack. Includes an admin dashboard for content management, Cloudinary-powered media uploads, Clerk authentication, and a custom audio player built with React and Zustand.",
+  "main": "index.js",
+  "scripts": {
+    "build":"npm install --prefix back-end && npm install --prefix front-end && npm run build --prefix front-end",
+    "start": "npm start --prefix back-end"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rubin737/spotify-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Rubin737/spotify-app/issues"
+  },
+  "homepage": "https://github.com/Rubin737/spotify-app#readme"
+}

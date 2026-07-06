@@ -40,6 +40,8 @@ export interface MusicStore{
     fetchFeaturedSongs:()=>Promise<void>,
     fetchMadeForUSongs:()=>Promise<void>,
     fetchTrendingSongs:()=>Promise<void>,
+    fetchSongs:()=>Promise<void>,
+    
     
 }
 

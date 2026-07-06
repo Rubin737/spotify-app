@@ -20,7 +20,6 @@ export const getAllStats=async(req,res,next)=>{
         res.status(200).json({data:{totalAlbums,totalUsers,totalSongs,totalArtists:totalArtists[0]?.count||0}})
     
     } catch (error) {
-        console.log(`Error in getting stats ${error.message}`);
         next(error)
     }
 }

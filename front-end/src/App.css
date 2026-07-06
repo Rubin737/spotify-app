@@ -5,6 +5,10 @@
   --foreground: oklch(0.985 0 0);   /* near-white text */
 }
 
+@theme {
+  --font-sans: 'InterVariable', sans-serif;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
