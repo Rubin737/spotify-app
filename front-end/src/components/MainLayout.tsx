@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -11,6 +11,8 @@ import AudioPlayer from "./home/AudioPlayer";
 import PlayerControls from "./PlayerControls";
 
 const MainLayout = () => {
+
+
   const isMobile = false;
   return (
     <div className="h-screen flex flex-col">

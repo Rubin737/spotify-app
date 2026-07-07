@@ -9,11 +9,14 @@ import { Link } from "react-router-dom";
 const LeftSidebar = () => {
   const albums = useMusicStore((store) => store.albums);
   const fetchAlbums = useMusicStore((store) => store.fetchAlbums);
-  const isLoading = useMusicStore((store) => store.isLoading);
+  const isLoading = useMusicStore((store) => store.isAlbumsLoading);
 
-  useEffect(() => {
-    fetchAlbums();
-  }, [fetchAlbums]);
+ useEffect(()=>{
+  if(albums.length===0){
+    fetchAlbums()
+  }
+ },[albums.length,fetchAlbums])
+
 
   return (
     <section className="flex h-full flex-col text-white p-2 space-y-3">
@@ -49,7 +52,7 @@ const LeftSidebar = () => {
               
               <PlayListSkeleton />
             ) : (
-              albums.map((eachAlbum) => (
+              albums?.map((eachAlbum) => (
                 <Link
                   key={eachAlbum._id}
                   to={`/album/${eachAlbum._id}`}

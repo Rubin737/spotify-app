@@ -24,7 +24,6 @@ export const useChatStore = create((set, get) => ({
       socketClient.auth = { userId };
       socketClient.connect();
       socketClient.on("connect", () => {
-        console.log("connected");
         socketClient.emit("user_connected", userId);
         socketClient.on("users_online", (users) => {
           const updatedUsers = new Set(users);
@@ -93,7 +92,6 @@ export const useChatStore = create((set, get) => ({
     set({ isMsgLoading: true, msgError: null });
     try {
       const response = await axiosInstance.get(`/user/message/${receiverId}`);
-      console.log(response.data.data," from chat store");
       set({ message: response.data.data });
     } catch (err) {
       set({ msgError: err?.response?.data?.message });
@@ -111,7 +109,6 @@ export const useChatStore = create((set, get) => ({
       const respone = await axiosInstance.get("/user/get-all-users");
       set({ users: respone.data.data });
     } catch (err: any) {
-      console.log(err);
       set({ userError: err.response.data.message });
     } finally {
       set({ isUserLoading: false });

@@ -42,6 +42,8 @@ export interface MusicStore{
     fetchTrendingSongs:()=>Promise<void>,
     fetchSongs:()=>Promise<void>,
     
+    isAlbumsLoading:boolean,
+    isAlbumsError:boolean,
     
 }
 

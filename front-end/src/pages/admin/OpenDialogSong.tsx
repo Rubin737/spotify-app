@@ -37,9 +37,9 @@ const OpenDialogSong = () => {
 
   
   const [newSong, setNewSong] = useState({
-    artist: "sample Artist",
+    artist: "",
     album: "",
-    title: "sample title",
+    title: "",
   });
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);

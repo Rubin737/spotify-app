@@ -11,15 +11,18 @@ export const useMusicStore = create<MusicStore>((set) => ({
   trendingSongs: [],
   featuredSongs: [],
   madeForUSongs: [],
+  isAlbumsError:null,
+  isAlbumsLoading:false,
+
   fetchAlbums: async () => {
-    set({ isLoading: true, error: null });
+    set({ isAlbumsLoading: true, isAlbumsError: null });
     try {
       const response = await axiosInstance.get("/album/get-albums");
       set({ albums: response.data.data });
     } catch (err: any) {
-      set({ error: err?.response?.data?.message});
+      set({ isAlbumsError: err?.response?.data?.message});
     } finally {
-      set({ isLoading: false });
+      set({ isAlbumsLoading: false });
     }
   },
   fetchAlbumsById: async (albumId) => {

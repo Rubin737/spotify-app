@@ -15,12 +15,10 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { SelectTrigger } from "@/components/ui/select";
 import { axiosInstance } from "@/lib/axios";
 import { useAdminStore } from "@/stores/useAdminStore";
 import { useMusicStore } from "@/stores/useMusicStore";
-import { File, ImageUp, Music4, Plus, X } from "lucide-react";
-import { Select } from "radix-ui";
+import { File, ImageUp, Plus, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 
 const OpenDialogAlbum = () => {

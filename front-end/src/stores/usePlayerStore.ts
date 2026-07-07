@@ -1,5 +1,6 @@
 import { Songs } from "@/types/types";
 import { create } from "zustand";
+import { useChatStore } from "./useChatStore";
 
 interface PlayerStore {
   currentSong: Songs | null;

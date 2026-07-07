@@ -9,15 +9,24 @@ import {
 } from "@/components/ui/table";
 import { useAdminStore } from "@/stores/useAdminStore";
 import { Calendar, Trash2Icon } from "lucide-react";
+import { useEffect } from "react";
+
+
 
 const SongTable = () => {
   const songs = useAdminStore((Store) => Store.songs);
   const delSong=useAdminStore(store=>store.deleteSong)
+  const fetchSongs=useAdminStore(s=>s.fetchSongs)
+  
+  useEffect(()=>{
+    fetchSongs()
+  },[songs])
+
   const handleDeleteSong=(id:string)=>{
    delSong(id)
   }
   
-
+ 
   return (
     <Table>
       <TableHeader className="hover:bg-zinc-800/50 border-b border-zinc-800">
