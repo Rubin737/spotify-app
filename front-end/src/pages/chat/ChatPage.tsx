@@ -34,12 +34,12 @@ const ChatPage = () => {
       </div>
       {
         users?.length!==0 ? (
-        <div className='grid p-2 lg:grid-cols-[200px_1fr] grid-cols-[50px_1fr] h-[calc(100vh-180px)]'>
+        <div className='grid p-2 lg:grid-cols-[200px_1fr]  grid-cols-[50px_1fr] lg:h-[calc(100vh-180px)] h-full'>
             <UsersList/>
             <div className='min-h-0'>
               {
                 selectedUser ? (
-                  <div className='flex h-full flex-col py-3'>
+                  <div className='flex h-full flex-col lg:py-3'>
                     <ChatHeader selecetedUser={selectedUser}/>
                     <div className='min-h-0 flex-1'>
                       <ChatBody/>

@@ -18,7 +18,7 @@ const ChatBody = () => {
 
   return (
   <ScrollArea className='h-full'>
-    <div className="p-5 flex flex-col gap-y-3">
+    <div className="lg:p-5 flex flex-col lg:gap-y-3">
       {messages.length !== 0 ? (
         messages.map((message) => {
           const isOwnMessage = message.senderID === user?.id;
@@ -27,7 +27,7 @@ const ChatBody = () => {
               key={message._id}
               className={`flex items-end gap-x-2 ${
                 isOwnMessage ? "flex-row-reverse self-end" : "self-start"
-              } min-w-0 max-w-[70%]`}
+              } min-w-0 max-w-[120px] lg:max-w-[200px]`}
             >
               <Avatar className="size-6 shrink-0">
                 <AvatarImage
@@ -65,7 +65,7 @@ const ChatBody = () => {
           );
         })
       ) : (
-        <div className="flex text-xs text-black w-[50%] p-2 bg-green-500 flex-col border rounded-md">
+        <div className="flex text-xs text-black lg:w-[50%] w-[70%] p-2 bg-green-500 flex-col border rounded-md">
           <p>👋 Welcome!</p>
           <p>
             This is the beginning of your conversation with{" "}

@@ -13,7 +13,7 @@ const SignInOAuthButton = () => {
   }
   return (
     <div>
-      <Button className='btn btn-primary' onClick={signInWithGoogle}>Signin with Google</Button>
+      <Button variant='ghost' className='p-2 bg-green-800 text-xs lg:text-sm cursor-pointer' onClick={signInWithGoogle}>Signin with Google</Button>
     </div>
   )
 }

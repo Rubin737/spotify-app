@@ -1,6 +1,7 @@
 import { usePlayerStore } from '@/stores/usePlayerStore'
 import { Songs } from '@/types/types'
 import { Pause, Play } from 'lucide-react'
+import { Button } from '../ui/button';
 
 const PlaySongButton = ({song}:{song:Songs}) => {
   const currentSong=usePlayerStore(store=>store.currentSong);
@@ -16,16 +17,16 @@ const PlaySongButton = ({song}:{song:Songs}) => {
 
   }
   return (
-    <button onClick={handlePlaySong} 
-    className={`btn btn-xs bg-primary rounded-md hover:scale-105 transition-all translate-y-1 group-hover:translate-y-0 hover:bg-primary/80 border-0
+    <Button variant='ghost' size='xs' onClick={handlePlaySong} 
+    className={`rounded-md bg-green-500 hover:scale-105 transition-all translate-y-1 group-hover:translate-y-0 hover:bg-primary/80 border-0
     ${isCurrentSong ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
     `}>
       {
-        isCurrentSong && isPlaying ? (<Pause  fill='black' className='size-3.5'/>) : <Play fill='black' className='size-3.5'/>
+        isCurrentSong && isPlaying ? (<Pause  fill='white' className='lg:size-3.5 size-2'/>) : <Play fill='black' className='lg:size-3.5 size-3'/>
       }
 
-    </button>
+    </Button>
   )
 }
 
-export default PlaySongButton
+export default PlaySongButton 

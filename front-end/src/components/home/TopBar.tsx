@@ -11,14 +11,14 @@ const TopBar = () => {
   if (!isLoaded) return null;
 
   return (
-    <header className="flex p-4 bg-zinc-800 rounded-md sticky z-10 backdrop-blur-md justify-between mx-3">
+    <header className="flex lg:p-4 p-1.5 px-3  items-center bg:bg-zinc-800  rounded-md sticky z-10 backdrop-blur-md justify-between lg:mx-3 mx-1">
       <div>
-        <img src="/spotify.png" alt="spotify-logo" className="size-8" />
+        <img src="/spotify.png" alt="spotify-logo" className="lg:size-8 size-7" />
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 ">
         {isAdmin && (
-          <Button asChild className="text-sm font-bold bg-zinc-700 border border-zinc-800">
+          <Button asChild className="text-sm font-bold bg-zinc-700 border border-zinc-800 hidden lg:block">
           <Link to="/admin" className="">
             <LayoutDashboardIcon className="size-5 text-green-500" />
             Admin Dashboard

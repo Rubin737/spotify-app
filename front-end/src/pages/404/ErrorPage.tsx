@@ -14,16 +14,16 @@ const  ErrorPage = ()=> {
 				</div>
 
 				{/* Error message */}
-				<div className='space-y-4'>
-					<h1 className='text-7xl font-bold text-white'>404</h1>
-					<h2 className='text-2xl font-semibold text-white'>Page not found</h2>
+				<div className='lg:space-y-4 space-y-2'>
+					<h1 className='lg:text-7xl text-4xl font-bold text-white'>404</h1>
+					<h2 className='lg:text-2xl text-xl font-semibold text-white'>Page not found</h2>
 					<p className='text-neutral-400 max-w-md mx-auto'>
 						Looks like this track got lost in the shuffle. Let's get you back to the music.
 					</p>
 				</div>
 
 				{/* Action buttons */}
-				<div className='flex flex-col sm:flex-row gap-4 justify-center items-center mt-8'>
+				<div className='flex flex-col sm:flex-row lg:gap-4 gap-2 justify-center items-center lg:mt-8 mt-2'>
 					<Button
 						onClick={() => navigate(-1)}
 						variant='outline'

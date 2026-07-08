@@ -11,11 +11,11 @@ const AlbumContent = () => {
         <CardHeader>
           <div className='flex items-center justify-between'>
             <div>
-              <CardTitle className='flex items-center gap-2'>
-                <Music className='text-primary size-6'/>
+              <CardTitle className='flex items-center text-sm  gap-2'>
+                <Music className='lg:size-6 size-4'/>
                 Album Library
               </CardTitle>
-              <CardDescription>
+              <CardDescription className='text-xs lg:text-sm'>
                 Manage your album history
               </CardDescription>
             </div>

@@ -99,8 +99,8 @@ const OpenDialogAlbum = () => {
       onOpenChange={(value) => setIsDialogOpen(value)}
     >
       <DialogTrigger asChild>
-        <Button className="font-bold cursor-pointer bg-background">
-          <Plus className="size-5" />
+        <Button  className="font-bold text-xs lg:text-sm cursor-pointer bg-background">
+          <Plus className="lg:size-5 size-4" />
           Add Album
         </Button>
       </DialogTrigger>
@@ -125,7 +125,7 @@ const OpenDialogAlbum = () => {
 
         <div
           onClick={handleImageFilePicker}
-          className="flex items-center justify-center border border-dashed p-16 rounded-lg border-zinc-700"
+          className="flex items-center justify-center border border-dashed lg:p-16 p-8   rounded-lg border-zinc-700"
         >
           {files?.imageFile ? (
             <div className="space-y-2 items-center flex flex-col">
@@ -162,14 +162,15 @@ const OpenDialogAlbum = () => {
           <Field>
             <FieldLabel>Album Title</FieldLabel>
             <Input
-              type="Vibes Year"
+              type="text"
               placeholder="Travis Scott"
+              className="placeholder:text-xs"
               value={newAlbum.title}
               onChange={(e) =>
                 setNewAlbum({ ...newAlbum, title: e.target.value })
               }
             />
-            <FieldDescription>This field must be filled out.</FieldDescription>
+            <FieldDescription className="text-xs lg:text-sm">This field must be filled out.</FieldDescription>
           </Field>
 
           <Field>
@@ -177,12 +178,13 @@ const OpenDialogAlbum = () => {
             <Input
               type="text"
               placeholder="Travis Scott"
+                className="placeholder:text-xs"
               value={newAlbum.artist}
               onChange={(e) =>
                 setNewAlbum({ ...newAlbum, artist: e.target.value })
               }
             />
-            <FieldDescription>This field must be filled out.</FieldDescription>
+            <FieldDescription className="text-xs lg:text-sm">This field must be filled out.</FieldDescription>
           </Field>
 
           <Field>
@@ -190,28 +192,30 @@ const OpenDialogAlbum = () => {
             <Input
               type="number"
               placeholder="2014"
+              className="placeholder:text-xs"
               value={newAlbum.releaseYear}
               onChange={(e) =>
                 setNewAlbum({ ...newAlbum, releaseYear: e.target.value })
               }
             />
-            <FieldDescription>This field must be filled out.</FieldDescription>
+            <FieldDescription className="text-xs lg:text-sm">This field must be filled out.</FieldDescription>
           </Field>
         </FieldGroup>
 
         <DialogFooter>
           <Button
-            variant={"outline"}
+            variant={"destructive"}
             disabled={isLoading}
-            className="cursor-pointer"
+            className="cursor-pointer bg-red-500"
             onClick={() => setIsDialogOpen(false)}
           >
             Cancel
           </Button>
           <Button
-            variant={"outline"}
+          
+            variant={"destructive"}
             disabled={isLoading}
-            className="cursor-pointer"
+            className="cursor-pointer bg-green-600"
             onClick={handleSubmit}
           >
             {isLoading ? "Creating..." : "Add Album"}

@@ -43,7 +43,17 @@ export interface MusicStore{
     fetchSongs:()=>Promise<void>,
     
     isAlbumsLoading:boolean,
-    isAlbumsError:boolean,
+    isAlbumsError:null | string,
+
+    isFeatureSongLoading:boolean,
+    featureSongError:null | string
+
+    isMadeSongLoading:boolean,
+    madeSongError:null | string
+
+     isTrendingLoading:boolean,
+    trendingSongError:null | string
+    
     
 }
 

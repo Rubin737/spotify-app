@@ -22,7 +22,7 @@ const AlbumTable = () => {
   
 
   return (
-    <Table>
+    <Table className="text-xs lg:text-sm">
       <TableHeader className="hover:bg-zinc-800/50 border-b border-zinc-800">
         <TableRow className="hover:bg-zinc-800/50 ">
           <TableHead className="w-[50px]">#</TableHead>
@@ -37,7 +37,7 @@ const AlbumTable = () => {
         {albums?.map((album) => (
           <TableRow key={album._id} className="hover:bg-zinc-800/50">
             <TableCell>
-                <img src={album.imageUrl} alt="song-cover" className="size-10 rounded-md object-cover" />
+                <img src={album.imageUrl} alt="song-cover" className="size-5 lg:size-10 rounded-md object-cover"/>
             </TableCell>
             <TableCell className="font-medium" >
                 {album.title}

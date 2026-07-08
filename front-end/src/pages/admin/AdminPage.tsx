@@ -27,15 +27,15 @@ const AdminPage = () => {
 
   if(!isAdmin && !isLoading) return <>You are not a admin</>
 
-  return (<section className="min-h-screen  bg-gradient-b from-zinc-900  via-zinc-900 to-black">
+  return (<section className="min-h-screen p-1.5  bg-gradient-b from-zinc-900  via-zinc-900 to-black">
     
-    <div className="p-8">
+    <div className="lg:p-8">
         <AdminHeader/>
         <AdminStats/>
         <Tabs defaultValue="songs" className="w-full flex flex-col my-5">
         <TabsList className="flex gap-1 bg-zinc-800/50 p-1 border-zinc-900">
-          <TabsTrigger className="data-[state=active]:bg-zinc-600 px-1 text-md font-medium cursor-pointer" value="songs"><Music className="size-4 mr-0.5"/>Songs</TabsTrigger>
-          <TabsTrigger className="data-[state=active]:bg-zinc-600 px-2 text-md font-medium cursor-pointer" value="albums"><Album className="size-4 mr-0.5"/>Albums</TabsTrigger>
+          <TabsTrigger className="data-[state=active]:bg-zinc-600 px-1 lg:text-md text-sm font-medium cursor-pointer" value="songs"><Music className="size-4 mr-0.5"/>Songs</TabsTrigger>
+          <TabsTrigger className="data-[state=active]:bg-zinc-600 px-2 lg:text-md text-sm font-medium cursor-pointer" value="albums"><Album className="size-4 mr-0.5"/>Albums</TabsTrigger>
         </TabsList>
         <TabsContent value="songs"><SongContent/></TabsContent>
         <TabsContent value="albums"><AlbumContent/></TabsContent>

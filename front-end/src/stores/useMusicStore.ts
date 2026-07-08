@@ -13,6 +13,12 @@ export const useMusicStore = create<MusicStore>((set) => ({
   madeForUSongs: [],
   isAlbumsError:null,
   isAlbumsLoading:false,
+  featureSongError:null,
+  isFeatureSongLoading:false,
+  isMadeSongLoading:false,
+  madeSongError:null,
+  isTrendingLoading:false,
+  trendingSongError:null,
 
   fetchAlbums: async () => {
     set({ isAlbumsLoading: true, isAlbumsError: null });
@@ -38,36 +44,36 @@ export const useMusicStore = create<MusicStore>((set) => ({
   },
 
   fetchFeaturedSongs: async () => {
-    set({ isLoading: true });
+    set({ isFeatureSongLoading: true });
     try {
       const response = await axiosInstance.get("/song/featured-songs");
       set({ featuredSongs: response.data.data });
     } catch (err: any) {
-      set({ error: err.response.data.message });
+      set({ featureSongError: err.response.data.message });
     } finally {
-      set({ isLoading: false });
+      set({ isFeatureSongLoading: false });
     }
   },
   fetchMadeForUSongs: async () => {
-    set({ isLoading: true });
+    set({ isMadeSongLoading: true });
     try {
       const response = await axiosInstance.get("/song/madeforu-songs");
       set({ madeForUSongs: response.data.data });
     } catch (err: any) {
-      set({ error: err.response.data.message });
+      set({ madeSongError: err.response.data.message });
     } finally {
-      set({ isLoading: false });
+      set({ isAlbumsLoading: false });
     }
   },
   fetchTrendingSongs: async () => {
-    set({ isLoading: true });
+    set({ isTrendingLoading: true });
     try {
       const response = await axiosInstance.get("/song/trending-songs");
       set({ trendingSongs: response.data.data });
     } catch (err: any) {
-      set({ error: err.response.data.message });
+      set({ trendingSongError: err.response.data.message });
     }
-    set({ isLoading: false });
+    set({ isTrendingLoading: false });
   },
   
   fetchSongs:async()=>{

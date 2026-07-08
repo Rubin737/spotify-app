@@ -20,7 +20,7 @@ const ChatInput = () => {
   }
 
   return (
-    <div className='flex items-center gap-2 px-5'>
+    <div className='flex items-center lg:gap-2 gap-1 lg:px-5'>
         <Input 
         value={newMsg}
         onChange={(event)=>setNewMsg(event.target.value)}
@@ -29,7 +29,7 @@ const ChatInput = () => {
             handleSend();
           }
         }} 
-        placeholder='Type a message...'  className='border-zinc-600 placehoder-text-xs focus-visible:ring-0 '/>
+        placeholder='Type a message...'  className='border-zinc-600 placehoder-text-xs text-xs lg:text-sm focus-visible:ring-0 placeholder:text-xs '/>
         <Button onClick={handleSend} disabled={!newMsg.trim()} size={'icon'} className='bg-green-800
         cursor-pointer '>
         <Send  className='size-4'/>

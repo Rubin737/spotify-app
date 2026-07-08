@@ -12,11 +12,11 @@ const SongContent = () => {
         <CardHeader>
           <div className='flex items-center justify-between'>
             <div>
-              <CardTitle className='flex items-center gap-2'>
-                <Music className='text-primary size-6'/>
+              <CardTitle className='flex items-center gap-2 text-sm lg:text-lg'>
+                <Music className='text-primary lg:size-6 size-4'/>
                 Song Library
               </CardTitle>
-              <CardDescription>
+              <CardDescription className='text-xs'>
                 Manage your music tracks
               </CardDescription>
             </div>

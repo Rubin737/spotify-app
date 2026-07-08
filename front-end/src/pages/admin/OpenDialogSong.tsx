@@ -140,8 +140,8 @@ const OpenDialogSong = () => {
       onOpenChange={(value) => setIsDialogOpen(value)}
     >
       <DialogTrigger asChild>
-        <Button className="font-bold cursor-pointer bg-background">
-          <Plus className="size-5" />
+        <Button className="font-bold text-xs lg:text-sm cursor-pointer bg-background">
+          <Plus className="lg:size-5 size-4" />
           Add Song
         </Button>
       </DialogTrigger>
@@ -149,7 +149,7 @@ const OpenDialogSong = () => {
       <DialogContent className=" bg-zinc-800 overflow-auto h-[90vh]  scrollbar-hide">
         <DialogHeader>
           <DialogTitle>Add New Song</DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-xs lg:text-sm">
             Add a new song to your music library
           </DialogDescription>
         </DialogHeader>
@@ -172,11 +172,12 @@ const OpenDialogSong = () => {
             hidden
           />
         </div>
-
+        <label>image file</label>
         <div
           onClick={handleImageFilePicker}
-          className="flex items-center justify-center border border-dashed p-16 rounded-lg border-zinc-700"
+          className="flex items-center justify-center border border-dashed lg:p-16 p-8 rounded-lg border-zinc-700"
         >
+          
           {files?.imageFile ? (
             <div className="space-y-2 items-center flex flex-col">
               <div className="space-x-2 items-center flex  cursor-pointer">
@@ -193,14 +194,14 @@ const OpenDialogSong = () => {
                 />
               </div>
             </div>
-          ) : (
+          ) : ( 
             <div className="space-y-2 items-center flex flex-col">
               <ImageUp />
-              <p className="text-sm font-semibold">Upload Artwork</p>
+              <p className="lg:text-sm text-xs font-semibold">Upload Artwork</p>
               <Button
                 variant={"outline"}
                 size={"sm"}
-                className="cursor-pointer"
+                className="cursor-pointer text-xs lg:text-sm"
               >
                 Choose File
               </Button>
@@ -236,6 +237,7 @@ const OpenDialogSong = () => {
           <Field>
             <FieldLabel>Title</FieldLabel>
             <Input
+            className="placeholder:text-xs lg:placeholder:text-sm"
               type="text"
               placeholder="Fein..."
               value={newSong.title}
@@ -243,12 +245,13 @@ const OpenDialogSong = () => {
                 setNewSong({ ...newSong, title: e.target.value })
               }
             />
-            <FieldDescription>This field must be filled out.</FieldDescription>
+            <FieldDescription className="text-xs lg:text-sm">This field must be filled out.</FieldDescription>
           </Field>
 
           <Field>
             <FieldLabel>Artist</FieldLabel>
             <Input
+              className="placeholder:text-xs lg:placeholder:text-sm"
               type="text"
               placeholder="Travis Scott"
               value={newSong.artist}
@@ -256,7 +259,7 @@ const OpenDialogSong = () => {
                 setNewSong({ ...newSong, artist: e.target.value })
               }
             />
-            <FieldDescription>This field must be filled out.</FieldDescription>
+            <FieldDescription className="text-xs lg:text-sm">This field must be filled out.</FieldDescription>
           </Field>
         </FieldGroup>
 
@@ -266,14 +269,16 @@ const OpenDialogSong = () => {
           }}
         >
           <SelectTrigger className="w-full">
-            <SelectValue placeholder="Choose Album" />
+            <SelectValue placeholder="Choose Album" 
+            className="placeholder:text-xs lg:placeholder:text-sm"
+            />
           </SelectTrigger>
           <SelectContent>
-            <SelectGroup className="bg-zinc-800 ">
-              <SelectItem value="none">No Album (Single)</SelectItem>
+            <SelectGroup className="bg-zinc-800">
+              <SelectItem value="none"  className="text-xs lg:text-sm">No Album (Single)</SelectItem>
               {albums.map((album) => (
                 <SelectItem
-                  className="hover:bg-zinc-600 mb-0.5 hover:border-zinc-700 hover:border border-bg-zinc-700"
+                  className="hover:bg-zinc-600 mb-0.5 hover:border-zinc-700 hover:border border-bg-zinc-700  text-xs lg:text-sm"
                   value={album._id}
                   key={album._id}
                 >
@@ -286,17 +291,17 @@ const OpenDialogSong = () => {
 
         <DialogFooter>
           <Button
-            variant={"outline"}
+            variant={"destructive"}
             disabled={isLoading}
-            className="cursor-pointer"
+            className="cursor-pointer bg-red-500"
             onClick={() => setIsDialogOpen(false)}
           >
             Cancel
           </Button>
           <Button
-            variant={"outline"}
+            variant={"destructive"}
             disabled={isLoading}
-            className="cursor-pointer"
+            className="cursor-pointer bg-green-600"
             onClick={handleSubmit}
           >
             {isLoading ? "Updating..." : "Add Music"}

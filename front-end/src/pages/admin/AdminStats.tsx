@@ -39,7 +39,7 @@ const AdminStats = () => {
 	];
 
   return (
-    <section className='mt-10 grid grid-cols-4 gap-3'>
+    <section className='mt-10 grid lg:grid-cols-4 grid-cols-2 gap-3'>
      {
       statsData.map(stat=>(
         <StatCard

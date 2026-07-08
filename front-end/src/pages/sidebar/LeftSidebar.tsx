@@ -19,8 +19,8 @@ const LeftSidebar = () => {
 
 
   return (
-    <section className="flex h-full flex-col text-white p-2 space-y-3">
-      <div className="space-y-2 bg-zinc-800 rounded-xl p-2">
+    <section className="flex   h-full flex-col text-white p-2 space-y-3">
+      <div className="space-y-2 bg-zinc-800 rounded-xl p-2 hidden lg:block">
         <Button
           asChild
           className="border border-zinc-900 bg-zinc-700 w-full justify-start gap-2"
