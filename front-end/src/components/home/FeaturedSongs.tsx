@@ -1,18 +1,17 @@
-import FeaturedSkeleton from '@/skeletons/featuredSkeleton';
 import PlaySongButton from './PlaySongButton';
 import { SongsType } from '@/types/types';
 import { useUser } from '@clerk/react';
-import SongSectionSkeleton from '@/skeletons/SongLoadingSkeleton';
+import SongLoadingSkeleton from '@/skeletons/SongLoadingSkeleton';
+import ErrorMessage from '@/pages/404/ErrorMesage';
 
 
 
 const FeaturedSongs = ({error,isLoading,songs,title}:SongsType) => {
 const {user}=useUser()  
 
-console.log(isLoading);
-
-  if(isLoading) return <SongSectionSkeleton/>
-  if(error) return <p>Error</p>
+  
+  if(isLoading) return <SongLoadingSkeleton/>
+  if(error) return <ErrorMessage/>
 
   return (
     <section>

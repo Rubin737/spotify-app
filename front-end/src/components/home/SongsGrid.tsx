@@ -1,11 +1,12 @@
-import FeaturedSkeleton from '@/skeletons/featuredSkeleton';
 import { SongsType } from '@/types/types';
 import PlaySongButton from './PlaySongButton';
+import SongLoadingSkeleton from '@/skeletons/SongLoadingSkeleton';
+import ErrorMessage from '@/pages/404/ErrorMesage';
 
 
 const SongsGrid = ({songs,error,isLoading,title}:SongsType) => {
-  if(isLoading) <FeaturedSkeleton/>
-  if(error) <p>Error</p>
+  if(isLoading) return <SongLoadingSkeleton/>
+  if(error) return <ErrorMessage/>
   
   return (
     <section>

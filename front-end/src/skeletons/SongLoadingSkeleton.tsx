@@ -1,4 +1,4 @@
-const SongSectionSkeleton = () => {
+const SongLoadingSkeleton = () => {
 
   return (
     <section>
@@ -22,8 +22,7 @@ const SongSectionSkeleton = () => {
                 <div className="h-2 w-14 bg-zinc-700 rounded" />
               </div>
 
-              {/* Play button */}
-              <div className="absolute right-3 bottom-3 size-8 rounded-full bg-zinc-700" />
+
             </div>
           ))
         }
@@ -32,4 +31,4 @@ const SongSectionSkeleton = () => {
   );
 };
 
-export default SongSectionSkeleton;
+export default SongLoadingSkeleton;

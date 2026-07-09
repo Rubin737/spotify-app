@@ -21,6 +21,7 @@ const AuthCallback = () => {
         imageUrl:user.imageUrl
       })
     } catch (error) {
+      //
     }
     finally{
       navigate("/")
@@ -32,10 +33,10 @@ const AuthCallback = () => {
 
 
  return <div className="h-screen w-full flex justify-center items-center bg-black">
-    <div className="bg-zinc-800/50 shadow-sm shadow-zinc-800 gap-y-2 px-24 rounded-2xl  py-3  flex items-center flex-col justify-center">
+    <div className="bg-zinc-800/50 shadow-sm shadow-zinc-800 lg:gap-y-2 gap-y-1 lg:px-24 px-10 rounded-2xl py-3  flex items-center flex-col justify-center">
       <Loader className="animate-spin text-emerald-500"/>
-      <h1 className="text-lg font-bold">Logging You in.</h1>
-      <h3 className="text-sm">Redirecting....</h3>
+      <h1 className="lg:text-lg text-sm font-semibold lg:font-bold">Logging You in.</h1>
+      <h3 className="lg:text-sm text-xs">Redirecting....</h3>
     </div>
   </div>;
 };

@@ -62,7 +62,7 @@ export const useMusicStore = create<MusicStore>((set) => ({
     } catch (err: any) {
       set({ madeSongError: err.response.data.message });
     } finally {
-      set({ isAlbumsLoading: false });
+      set({ isMadeSongLoading: false });
     }
   },
   fetchTrendingSongs: async () => {

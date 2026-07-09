@@ -2,6 +2,7 @@ import React from 'react'
 import { Button } from '../ui/button'
 import { Link } from 'react-router-dom'
 import { Album, BadgeAlert, HomeIcon, MessageSquareQuote, TelescopeIcon } from 'lucide-react'
+import { useAuthStore } from '@/stores/useAuthStore'
 
 
 const navBar=[
@@ -28,7 +29,8 @@ const navBar=[
   {
     name:"Admin",
     icon:<BadgeAlert className='size-5'/>,
-    to:"/admin"
+    to:"/admin",
+    adminOnly:true
   },
 
 ]
@@ -36,10 +38,13 @@ const navBar=[
 
 
 const MobileFooter = () => {
+   const isAdmin = useAuthStore((store) => store.isAdmin);
+  
   return (
+    
     <footer className='flex  px-2 py-2 justify-between items-center'>
       {
-        navBar.map((item,i)=>(
+        navBar.filter(item=>!item.adminOnly || isAdmin).map((item,i)=>(
           <Button size='icon' asChild className='cursor-pointer' key={i}>
             <Link to={item.to} className='flex flex-col items-center gap-1 '>
               {
