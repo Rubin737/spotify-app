@@ -42,7 +42,7 @@ const MobileFooter = () => {
   
   return (
     
-    <footer className='flex  px-2 py-2 justify-between items-center'>
+    <footer className='flex  px-2 py-2 justify-evenly items-center'>
       {
         navBar.filter(item=>!item.adminOnly || isAdmin).map((item,i)=>(
           <Button size='icon' asChild className='cursor-pointer' key={i}>
