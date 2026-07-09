@@ -1,62 +1,117 @@
-# 🎵 Spotify Clone
+# 🎵 SoundHive — Full-Stack Spotify Clone
 
-A full-stack music streaming web application inspired by Spotify — built from scratch with a MERN + TypeScript stack. Includes an admin dashboard for content management, Cloudinary-powered media uploads, Clerk authentication, and a custom audio player built with React and Zustand.
+<div align="center">
 
-> ⚠️ **Status:** Actively in development. Core song/album management and playback are functional. Real-time features (friend activity, chat via Socket.io) are in progress — see [Roadmap](#-roadmap) below.
+![Melofy Banner](./screenshots/banner.png)
+
+**A full-stack, real-time music streaming app — built from scratch with the MERN stack + TypeScript.**
+
+[![Live Demo](https://img.shields.io/badge/demo-live-1DB954?style=for-the-badge&logo=render&logoColor=white)](https://spotify-but-better-db3c.onrender.com/)
+[![GitHub](https://img.shields.io/badge/code-github-181717?style=for-the-badge&logo=github)](https://github.com/Rubin737/spotify-app)
+
+[Live Demo](https://spotify-but-better-db3c.onrender.com/) · [Report Bug](https://github.com/Rubin737/spotify-app/issues) · [Request Feature](https://github.com/Rubin737/spotify-app/issues)
+
+</div>
+
+---
+
+## 📖 About
+
+SoundHive is a Spotify-inspired music streaming platform I built end-to-end — frontend, backend, auth, real-time features, and deployment. It's not a tutorial clone; every feature (audio playback engine, admin CMS, real-time chat, friend activity feed) was designed and debugged from scratch, including race conditions in Socket.io event handling, Cloudinary upload pipelines, and JWT token refresh flows with Clerk.
+
+**🔗 Live app:** [spotify-but-better-db3c.onrender.com](https://spotify-but-better-db3c.onrender.com/)
+> Hosted on Render's free tier — the backend may take 30–60s to spin up on first load.
+
+---
+
+## 📸 Screenshots
+
+<div align="center">
+
+| Home|  Sign in|
+|---|---|
+| ![Home](./screenshots/home.png) | ![Sign in](./screenshots/signin_options.png) |
+
+| Admin Dashboard | Real-Time Chat |
+|---|---|
+| ![Admin](./screenshots/admin.png) | ![Chat](./screenshots/chat.png) |
+
+| Mobile View |
+|:---:|
+| <img src="./screenshots/mobile_home.png" width="300"/> |
+| <img src="./screenshots/mobile_admin.png" width="300"/> |
+| <img src="./screenshots/mobile_album.png" width="300"/> |
+| <img src="./screenshots/404_mobile.png" width="300"/> |
+| <img src="./screenshots/friends.png" width="300"/> |
+
+
+</div>
 
 ---
 
 ## ✨ Features
 
-### 🎧 Core
-- Browse songs and albums with a Spotify-style UI
-- Custom audio player (play/pause, next/previous, seek) built with the browser Audio API + `useRef`
-- Resizable three-panel layout (sidebar, main content, now-playing) using shadcn/ui `ResizablePanel`
-- Responsive song table with hover-to-play interaction
+### 🎧 Core Playback
+- Browse songs and albums in a Spotify-style, resizable three-panel layout (`sidebar`, `main`, `now-playing`) via shadcn/ui `ResizablePanel`
+- Custom audio player — play/pause, next/previous, seek — built directly on the browser Audio API with `useRef`
+- Hover-to-play song tables with responsive design across desktop, tablet, and mobile
 
 ### 🔐 Authentication
-- Secure auth powered by [Clerk](https://clerk.com/) (`@clerk/react` v6)
-- Short-lived JWT tokens refreshed automatically via an Axios interceptor pattern
+- Secure auth via [Clerk](https://clerk.com/) (`@clerk/react` v6)
+- Short-lived JWTs refreshed automatically through an Axios interceptor — no manual token handling anywhere in the app
+
+### 💬 Real-Time (Socket.io)
+- Live friend activity feed — see what friends are currently listening to
+- Real-time one-to-one chat between users
+- Server-side presence tracking using in-memory Maps for connected sockets and user activity
 
 ### 🛠️ Admin Dashboard
-- Upload and manage songs and albums
-- Cloudinary integration for audio and image storage
-- Automatic audio duration extraction from Cloudinary's upload response
-- Stat cards for content overview
-- Delete functionality for songs/albums
+- Full CRUD for songs and albums
+- Cloudinary-powered audio + image uploads with automatic duration extraction from upload metadata
+- Content overview stat cards
+
+### 📱 Responsive Design
+- Fully responsive layout with a dedicated mobile experience — collapsible sidebar (shadcn `Sheet`), mobile footer nav, and breakpoint-driven layout switching via Tailwind
 
 ### 🗄️ Backend
-- RESTful API built with Node.js + Express
-- MongoDB + Mongoose for data modeling
-- Signed media uploads to Cloudinary (audio + images)
+- RESTful API with Node.js + Express
+- MongoDB + Mongoose data modeling
+- Environment-aware CORS configuration for local + production
 
 ---
 
 ## 🧰 Tech Stack
 
-| Layer          | Technology                                      |
-|----------------|--------------------------------------------------|
-| Frontend       | React, Vite, TypeScript                          |
-| State          | Zustand                                          |
-| UI Components  | shadcn/ui, Radix UI, Tailwind CSS                |
-| Backend        | Node.js, Express                                 |
-| Database       | MongoDB, Mongoose                                |
-| Authentication | Clerk                                            |
-| Media Storage  | Cloudinary                                       |
-| File Uploads   | express-fileupload                               |
+| Layer | Technology |
+|---|---|
+| Frontend | React, Vite, TypeScript |
+| State Management | Zustand |
+| UI | shadcn/ui, Radix UI, Tailwind CSS |
+| Backend | Node.js, Express |
+| Database | MongoDB, Mongoose |
+| Auth | Clerk (`@clerk/react` v6) |
+| Real-Time | Socket.io |
+| Media Storage | Cloudinary |
+| Deployment | Render |
 
 ---
 
 ## 📁 Project Structure
 
 ```
-spotify-clone/
-├── frontend/          # React + Vite + TypeScript client
-│   ├── src/
-│   └── ...
-├── backend/           # Node.js + Express API
-│   ├── src/
-│   └── ...
+spotify-app/
+├── front-end/          # React + Vite + TypeScript client
+│   └── src/
+│       ├── components/
+│       ├── pages/
+│       ├── store/      # Zustand stores
+│       └── ...
+├── back-end/            # Node.js + Express API
+│   └── src/
+│       ├── controllers/
+│       ├── routes/
+│       ├── models/
+│       └── ...
 └── README.md
 ```
 
@@ -65,8 +120,8 @@ spotify-clone/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v18+ recommended)
-- MongoDB Atlas account (or local MongoDB instance)
+- Node.js (v18+)
+- MongoDB Atlas account (or local MongoDB)
 - Cloudinary account
 - Clerk account
 
@@ -82,8 +137,8 @@ cd back-end
 npm install
 ```
 
-Create a `.env` file in `back-end/` based on `.env.example`:
-```
+Create a `.env` file in `back-end/`:
+```env
 MONGODB_URI=your_mongodb_connection_string
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
@@ -91,7 +146,6 @@ CLOUDINARY_API_SECRET=your_api_secret
 CLERK_SECRET_KEY=your_clerk_secret_key
 ```
 
-Run the backend:
 ```bash
 npm run dev
 ```
@@ -102,43 +156,46 @@ cd ../front-end
 npm install
 ```
 
-Create a `.env` file in `front-end/` based on `.env.example`:
-```
+Create a `.env` file in `front-end/`:
+```env
 VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 VITE_API_BASE_URL=http://localhost:5000
 ```
 
-Run the frontend:
 ```bash
 npm run dev
 ```
-
-The app should now be running locally — check your terminal output for the exact ports.
-
----
-
-## 🗺️ Roadmap
-
-- [ ] Deploy frontend (Vercel/Netlify) and backend (Render/Railway)
-- [ ] Real-time "friends activity" — see what friends are currently playing (Socket.io)
-- [ ] Real-time chat between friends (Socket.io)
-- [ ] Full mobile responsiveness
 
 ---
 
 ## 🎓 What I Learned Building This
 
-- Signed media uploads and resource-type handling with Cloudinary's SDK
-- Clerk v6 authentication architecture, including token refresh patterns
-- State management with Zustand and avoiding stale closures/state bugs
+- Designing and debugging real-time systems with Socket.io — race conditions, event listener duplication, and server-side presence tracking
+- Clerk's v6 auth architecture: short-lived JWTs, HttpOnly refresh cookies, and `getToken()` behavior under the hood
+- Signed media uploads and `resource_type` handling with Cloudinary's SDK
+- State management with Zustand, and avoiding stale closures across async operations
+- Building fully responsive layouts with conditional rendering and Tailwind breakpoints instead of pure CSS media queries
 - Debugging async race conditions in the browser Audio API (`AbortError`)
-- Building accessible, controlled components with Radix/shadcn primitives
+- Deploying a full MERN app to production — environment-aware CORS, MongoDB Atlas network access, and credential rotation
+
+---
+
+## 🗺️ Roadmap
+
+- [x] Real-time friend activity (Socket.io)
+- [x] Real-time chat between friends
+- [x] Full mobile responsiveness
+- [x] Production deployment
+- [ ] Playlists and liked songs
+- [ ] Search functionality
+- [ ] Dark/light theme toggle
 
 ---
 
 ## 👤 Author
 
 **Rubin**
+
 - Portfolio: [rubinwebdev.netlify.app](https://rubinwebdev.netlify.app)
 - GitHub: [@Rubin737](https://github.com/Rubin737)
 - LinkedIn: [linkedin.com/in/rubisten](https://linkedin.com/in/rubisten/)
