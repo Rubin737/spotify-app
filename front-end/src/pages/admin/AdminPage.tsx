@@ -1,5 +1,5 @@
 import { useAuthStore } from "@/stores/useAuthStore";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AdminHeader from "./AdminHeader";
 import AdminStats from "./AdminStats";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -8,6 +8,7 @@ import { useMusicStore } from "@/stores/useMusicStore";
 import { useAdminStore } from "@/stores/useAdminStore";
 import SongContent from "./SongContent";
 import AlbumContent from "./AlbumContent";
+import PlayerControls from "@/components/PlayerControls";
 
 const AdminPage = () => {
   const isLoading = useAuthStore((store) => store.isLoading);
@@ -23,6 +24,16 @@ const AdminPage = () => {
     fetchStats();
   },[fetchAlbum,fetchSongs,fetchStats])
 
+
+    const [isMobile,setIsMobile]=useState(window.innerWidth<768)
+    useEffect(()=>{
+     const handleResize=()=>setIsMobile(window.innerWidth<768)
+      window.addEventListener("resize",handleResize)
+      return()=>{
+        window.removeEventListener("resize",handleResize)
+      }
+    },[])
+  
 
 
   if(!isAdmin && !isLoading) return <>You are not a admin</>
@@ -40,8 +51,12 @@ const AdminPage = () => {
         <TabsContent value="songs"><SongContent/></TabsContent>
         <TabsContent value="albums"><AlbumContent/></TabsContent>
       </Tabs>
-    </div>
+      {
+      isMobile && <PlayerControls/>
+    }
 
+    </div>
+    
   </section>);
 };
 

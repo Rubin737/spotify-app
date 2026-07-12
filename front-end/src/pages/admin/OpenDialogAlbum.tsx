@@ -26,9 +26,9 @@ const OpenDialogAlbum = () => {
   const fetchStats = useAdminStore((store) => store.fetchStats);
 
   const [newAlbum, setNewAlbum] = useState({
-    artist: "sample Artist",
-    releaseYear: "2000",
-    title: "sample title",
+    artist: "",
+    releaseYear: "",
+    title: "",
   });
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
