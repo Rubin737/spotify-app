@@ -47,20 +47,20 @@ app.use(
   }),
 );
 
-// const tempDir = path.join(process.cwd(), "tmp");
-// cron.schedule("0 * * * *", () => {
-//   if (fs.existsSync(tempDir)) {
-//     fs.readdir(tempDir, (err, files) => {
-//       if (err) {
-//         console.log("error", err);
-//         return;
-//       }
-//       for (const file of files) {
-//         fs.unlink(path.join(tempDir, file), (err) => {});
-//       }
-//     });
-//   }
-// });
+const tempDir = path.join(process.cwd(), "tmp");
+cron.schedule("0 * * * *", () => {
+  if (fs.existsSync(tempDir)) {
+    fs.readdir(tempDir, (err, files) => {
+      if (err) {
+        console.log("error", err);
+        return;
+      }
+      for (const file of files) {
+        fs.unlink(path.join(tempDir, file), (err) => {});
+      }
+    });
+  }
+});
 
 app.use("/api/auth", authRouter);
 app.use("/api/admin", adminRouter);
@@ -70,12 +70,12 @@ app.use("/api/stat", stateRouter);
 app.use("/api/album", albumRouter);
 app.use(errorHandler);
 
-// if (MODE === "production") {
-//   app.use(express.static(path.join(__dirname, "../front-end/dist")));
-//   app.get("/*splat", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "../front-end/dist/index.html"));
-//   });
-// }
+if (MODE === "production") {
+  app.use(express.static(path.join(__dirname, "../front-end/dist")));
+  app.get("/*splat", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../front-end/dist/index.html"));
+  });
+}
 
 await mongoDb();
 httpServer.listen(PORT, () => {
