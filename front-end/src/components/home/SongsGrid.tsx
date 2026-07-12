@@ -17,7 +17,7 @@ const SongsGrid = ({songs,error,isLoading,title}:SongsType) => {
           songs?.map(song=>(
             <div key={song._id} className='flex flex-col gap-2 group bg-zinc-800 lg:p-4 p-1 rounded-md'>
               <div className='relative'>
-                <img src={song.imageUrl} className='rounded-md size-22 md:size-[150px] lg:size-[227px] object-cover' alt="song-cover" />
+                <img src={song.imageUrl} className='rounded-md size-[110px] md:size-[150px] lg:size-[227px] object-cover' alt="song-cover" />
                 <div className='absolute bottom-2 right-2'>
                   <PlaySongButton song={song}/>
                 </div>
