@@ -17,7 +17,7 @@ export const getFeaturedSongs=async(req,res,next)=>{
     try {
         const featured=await Song.aggregate([
             {$sample:{
-                size:10
+                size:18
             }},
             {$project:{albumId:0}}
         ])
