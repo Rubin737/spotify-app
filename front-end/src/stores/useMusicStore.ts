@@ -47,7 +47,7 @@ export const useMusicStore = create<MusicStore>((set) => ({
     set({ isFeatureSongLoading: true });
     try {
       const response = await axiosInstance.get("/song/featured-songs");
-      set({ featuredSongs: response.data.data });
+      set({ featuredSongs: response.data.data.slice(0, 10)});
     } catch (err: any) {
       set({ featureSongError: err.response.data.message });
     } finally {
